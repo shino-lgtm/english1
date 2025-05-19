@@ -53,15 +53,23 @@ const quizData = [
 
 let current = 0;
 let score = 0;
+let timer;
+let timeLeft = 15;
 
 const questionEl = document.getElementById("question");
 const choicesEl = document.getElementById("choices");
+const timerEl = document.getElementById("timer");
 const nextBtn = document.getElementById("next-btn");
 const resultContainer = document.getElementById("result-container");
 const scoreEl = document.getElementById("score");
 
 function loadQuestion() {
   nextBtn.disabled = true;
+  clearInterval(timer);
+  timeLeft = 15;
+  updateTimer();
+  timer = setInterval(countdown, 1000);
+
   const q = quizData[current];
   questionEl.textContent = q.question;
   choicesEl.innerHTML = "";
@@ -76,7 +84,22 @@ function loadQuestion() {
   });
 }
 
+function updateTimer() {
+  timerEl.textContent = `残り時間: ${timeLeft}秒`;
+}
+
+function countdown() {
+  timeLeft--;
+  updateTimer();
+  if (timeLeft <= 0) {
+    clearInterval(timer);
+    markIncorrect();
+    nextBtn.disabled = false;
+  }
+}
+
 function selectAnswer(button, correctAnswer) {
+  clearInterval(timer);
   const buttons = choicesEl.querySelectorAll("button");
   buttons.forEach(btn => {
     btn.disabled = true;
@@ -91,8 +114,20 @@ function selectAnswer(button, correctAnswer) {
     score++;
   }
 
-  speak(correctAnswer); // 正解の英語を読み上げ
+  speak(correctAnswer);
   nextBtn.disabled = false;
+}
+
+function markIncorrect() {
+  const buttons = choicesEl.querySelectorAll("button");
+  buttons.forEach(btn => {
+    btn.disabled = true;
+    if (btn.textContent === quizData[current].correct) {
+      btn.classList.add("correct");
+    } else {
+      btn.classList.add("incorrect");
+    }
+  });
 }
 
 function speak(text) {
