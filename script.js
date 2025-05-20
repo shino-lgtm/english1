@@ -9,7 +9,7 @@ const questions = [
   },
   {
     japanese: "チェックインカウンターはどこですか？",
-    english: "Where is the check-in counter?"
+    english: "Where is the checkin counter?"
   },
   {
     japanese: "預け荷物はありますか？",
@@ -37,7 +37,7 @@ const questions = [
   },
   {
     japanese: "お名前とご搭乗便をお願いします。",
-    english: "Your name and flight number, please."
+    english: "Your name and flight number please."
   }
 ];
 
