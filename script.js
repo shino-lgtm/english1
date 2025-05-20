@@ -1,7 +1,7 @@
 const questions = [
   {
     japanese: "搭乗券を見せてください。",
-    english: "Please show me your boarding pass."
+    english: "Please show me your boarding pass"
   },
   {
     japanese: "パスポートを拝見できますか？",
@@ -17,7 +17,7 @@ const questions = [
   },
   {
     japanese: "手荷物検査を受けてください。",
-    english: "Please go through the security check."
+    english: "Please go through the security check"
   },
   {
     japanese: "出発ゲートは何番ですか？",
@@ -37,7 +37,7 @@ const questions = [
   },
   {
     japanese: "お名前とご搭乗便をお願いします。",
-    english: "Your name and flight number please."
+    english: "Your name and flight number please"
   }
 ];
 
